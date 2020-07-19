@@ -1,0 +1,58 @@
+$foreground: #16161d; // Eigengrau
+$background: #FFFFFF;
+
+@mixin color-theme($fg, $bg, $bg-dark, $fg-light, $link, $link-hover) {
+  color: $fg;
+  background-color: $bg;
+
+  a[href]       { color: $link; }
+  a[href]:hover { color: $link-hover; }
+
+  .fg-color        { color: $fg; }
+  .bg-color        { background-color: $bg; }
+  .fill-with-bg    { fill: $bg !important; } // This is for svg
+  .bg-color-border { border-color: $bg !important; }
+  .fg-color-border { border-color: $fg !important; }
+  .fg-color-invert { color: $bg !important; }
+  .bg-color-invert { background-color: $fg !important; }
+
+  // for dark backgrounds (or even darker when using a dark theme)
+  .bg-dark {
+    color: $fg-light;
+    background-color: $bg-dark;
+
+    a[href] { color: $fg-light; }
+  }
+}
+
+
+@mixin light-theme {
+  @include color-theme(
+    $fg: $foreground,
+    $bg: $background,
+    $bg-dark: $foreground,
+    $fg-light: $background,
+    $link: $foreground,
+    $link-hover: crimson
+  );
+}
+
+@mixin dark-theme {
+  @include color-theme(
+    $fg: $background,
+    $bg: $foreground,
+    $bg-dark: black,
+    $fg-light: $background,
+    $link: $background,
+    $link-hover: crimson
+  );
+}
+
+.system-theme { @include light-theme; }
+
+@media (prefers-color-scheme: dark)  {
+  .system-theme { @include dark-theme; }
+}
+
+.light-theme { @include light-theme; }
+.dark-theme  { @include dark-theme; }

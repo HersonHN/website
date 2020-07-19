@@ -1,0 +1,30 @@
+#global-content .post.content {
+  padding-bottom: 4rem;
+  
+  .title {
+    margin-bottom: 2rem;
+
+    h1 {
+      margin-bottom: 0;
+      font-size: 1.7rem;
+    }
+
+    .second-line {
+      line-height: 2rem;
+    }
+
+    small {
+      display: inline-block;
+    }
+  }
+
+  article {
+    > p, > ul, > ol {
+      margin-bottom: 1.5rem;
+    }
+    h1, h2, h3 {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

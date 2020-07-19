@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  @extend .fg-color;
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+a:hover {
+  color: crimson;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+p, li {
+  line-height: 1.7em;
+}
+
+pre {
+  padding: 1rem 1.4rem;
+  max-width: 100%;
+  overflow: auto;
+  border-radius: 4px;
+  background: hsl(210, 28%, 93%);
+}
+
+pre, code {
+  font-size: 1.2rem;
+}
+
+pre > code {
+  font-size: 1rem;
+}
+
+code {
+  background-color: rgba(128, 128, 128, 0.2);
+  padding: .1rem .2rem;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+input, button, textarea {
+  font-size: .9rem;
+  padding: .5rem;
+}
+
+textarea {
+  width: 100%;
+  border: none;
+}
+
+picture {
+  display: block;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  p {
+    margin-bottom: 0;
+  }
+}
