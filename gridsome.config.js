@@ -6,6 +6,7 @@
 
 module.exports = {
   siteName: 'Herson Salinas',
+  titleTemplate: '%s',
   templates: {
     Post: '/:year/:title',
   },
@@ -30,8 +31,8 @@ module.exports = {
     }
   ],
   chainWebpack: config => {
-    const svgRule = config.module.rule('svg')
-    svgRule.uses.clear()
+    const svgRule = config.module.rule('svg');
+    svgRule.uses.clear();
     svgRule.use('vue-svg-loader').loader('vue-svg-loader');
   }
 };

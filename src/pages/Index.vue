@@ -20,14 +20,21 @@
 
   export default {
     metaInfo: {
-      title: 'Home',
+      title: 'Herson Salinas',
     },
     components: {
       HersonLogo,
     },
     async mounted() {
-      await import('@/scripts/home/monkeypatch');
-      await import('earthbound-battlebackgrounds');
+      // call setupEngine if the code was already loaded before
+      // (this issue was happening only on dev mode)
+      if (!window.setupEngine) {
+        await import('@/scripts/home/monkeypatch');
+        const { setupEngine } = await import('earthbound-battlebackgrounds');
+        window.setupEngine = setupEngine;
+      } else {
+        window.setupEngine();
+      }
     },
   }
 </script>
