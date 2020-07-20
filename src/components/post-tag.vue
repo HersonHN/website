@@ -1,5 +1,8 @@
 <template>
-  <a class="tag" :href="path">
+  <a
+    class="tag"
+    :href="path"
+  >
     {{ tag.title }}
   </a>
 </template>

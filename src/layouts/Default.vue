@@ -1,15 +1,16 @@
 <template>
-  <section id="app"
+  <section
+    id="app"
     :class="[page.forceTheme ? `${page.forceTheme}-theme` : '']"
   >
-    <page-header></page-header>
+    <page-header />
     <main>
-      <slot></slot>
+      <slot />
     </main>
     <section class="post-content">
       <!-- post-content -->
     </section>
-    <page-footer></page-footer>
+    <page-footer />
   </section>
 </template>
 

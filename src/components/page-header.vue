@@ -6,7 +6,8 @@
     }"
     :style="{
       'background-image': page.slug ? `url('/assets/img/banners/${ page.slug }@banner.png')` : ''
-    }">
+    }"
+  >
     <div class="flex header-inner">
       <div class="flex-grow">
         <nav class="center">
@@ -17,7 +18,7 @@
         </nav>
       </div>
       <div class="flex-shrink change-theme-container">
-        <change-theme v-if="!page.forceTheme"></change-theme>
+        <change-theme v-if="!page.forceTheme" />
       </div>
     </div>
   </header>

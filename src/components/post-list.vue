@@ -1,8 +1,13 @@
 <template>
   <section class="content archive-section">
-    <h2 class="main-title">{{ title }}</h2>
+    <h2 class="main-title">
+      {{ title }}
+    </h2>
 
-    <div v-for="post in posts" :key="post.id">
+    <div
+      v-for="post in posts"
+      :key="post.id"
+    >
       <p class="flex">
         <span class="flex-shrink">
           <span class="date">{{ post.date }}</span>

@@ -2,10 +2,15 @@
   <Layout>
     <section class="index-page">
       <section class="logo-container">
-        <canvas></canvas>
-        <herson-logo class="logo"></herson-logo>
+        <canvas />
+        <herson-logo class="logo" />
       </section>
-      <p class="center"><a target="_blank" href="https://news.herson.hn/">RSS Reader</a></p>
+      <p class="center">
+        <a
+          target="_blank"
+          href="https://news.herson.hn/"
+        >RSS Reader</a>
+      </p>
     </section>
   </Layout>
 </template>

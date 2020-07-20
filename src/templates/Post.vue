@@ -5,12 +5,15 @@
         <h1>{{ $page.post.title }}</h1>
         <div class="second-line">
           <small class="gray">{{ $page.post.date }}</small>
-            <post-tag v-for="tag in $page.post.tags" :key="tag.id" :tag="tag"></post-tag>
+          <post-tag
+            v-for="tag in $page.post.tags"
+            :key="tag.id"
+            :tag="tag"
+          />
         </div>
       </div>
 
-      <article v-html="$page.post.content">
-      </article>
+      <article v-html="$page.post.content" />
     </section>
   </Layout>
 </template>

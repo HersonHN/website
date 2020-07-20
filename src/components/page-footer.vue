@@ -2,10 +2,26 @@
   <footer class="site-footer bg-dark">
     <nav class="center">
       <p>
-        <a class="icon" target="_blank" href="https://www.github.com/hersonhn/"><i class="icon-github"></i></a>
-        <a class="icon" target="_blank" href="https://www.twitter.com/hersonhn/"><i class="icon-twitter"></i></a>
-        <a class="icon" target="_blank" href="https://www.instagram.com/hersonhn/"><i class="icon-instagram"></i></a>
-        <a class="icon" target="_blank" href="https://hersonhn.tumblr.com/"><i class="icon-tumblr"></i></a>
+        <a
+          class="icon"
+          target="_blank"
+          href="https://www.github.com/hersonhn/"
+        ><i class="icon-github" /></a>
+        <a
+          class="icon"
+          target="_blank"
+          href="https://www.twitter.com/hersonhn/"
+        ><i class="icon-twitter" /></a>
+        <a
+          class="icon"
+          target="_blank"
+          href="https://www.instagram.com/hersonhn/"
+        ><i class="icon-instagram" /></a>
+        <a
+          class="icon"
+          target="_blank"
+          href="https://hersonhn.tumblr.com/"
+        ><i class="icon-tumblr" /></a>
       </p>
       <p>
         <a href="mailto:contact@herson.hn">contact@herson.hn</a>
