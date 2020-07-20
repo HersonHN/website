@@ -27,8 +27,13 @@ module.exports = {
             create: true
           }
         },
-      }
-    }
+        remark: {
+          plugins: [
+            '@gridsome/remark-prismjs',
+          ],
+        },
+      },
+    },
   ],
   chainWebpack: config => {
     const svgRule = config.module.rule('svg');
