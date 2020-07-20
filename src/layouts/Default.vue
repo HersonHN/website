@@ -59,7 +59,7 @@ query {
     }
   }
 
-  #global-content > main {
+  #app > main {
     flex: 1 1;
   }
 </style>

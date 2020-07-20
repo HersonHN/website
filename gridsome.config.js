@@ -9,12 +9,23 @@ module.exports = {
   templates: {
     Post: '/:year/:title',
   },
+  templates: {
+    Tag: '/tags/:id',
+  },
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'content/posts/*.md',
         typeName: 'Post',
+        route: '/:year/:title',
+        refs: {
+          tags: {
+            typeName: 'Tag',
+            route: '/tags/:id',
+            create: true
+          }
+        },
       }
     }
   ],

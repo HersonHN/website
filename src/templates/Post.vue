@@ -2,10 +2,10 @@
   <Layout>
     <section class="post content">
       <div class="title">
-        <h1>{{ this.$page.post.title }}</h1>
+        <h1>{{ $page.post.title }}</h1>
         <div class="second-line">
           <small class="gray">{{ $page.post.date }}</small>
-            <post-tag v-for="tag in $page.post.tags" :key="tag" :tag="tag"></post-tag>
+            <post-tag v-for="tag in $page.post.tags" :key="tag.id" :tag="tag"></post-tag>
         </div>
       </div>
 
@@ -22,7 +22,10 @@ query Post ($id: ID!) {
     title
     description
     date (format: "YYYY-MM-DD")
-    tags
+    tags {
+      id
+      title
+    }
     content
   }
 }

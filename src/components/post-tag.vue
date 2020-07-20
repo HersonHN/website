@@ -1,6 +1,6 @@
 <template>
   <a class="tag" :href="path">
-    {{ tag }}
+    {{ tag.title }}
   </a>
 </template>
 
@@ -8,11 +8,11 @@
   export default {
     name: 'PostTag',
     props: {
-      tag: String,
+      tag: Object,
     },
     computed: {
       path() {
-        return '#';
+        return `/tags/${this.tag.id}`;
       },
     },
   };
