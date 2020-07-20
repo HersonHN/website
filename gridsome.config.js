@@ -18,11 +18,11 @@ module.exports = {
       options: {
         path: 'content/posts/*.md',
         typeName: 'Post',
-        route: '/:year/:title',
+        templates: '/:year/:title',
         refs: {
           tags: {
             typeName: 'Tag',
-            route: '/tags/:id',
+            templates: '/tags/:id',
             create: true
           }
         },

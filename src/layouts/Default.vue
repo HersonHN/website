@@ -7,8 +7,8 @@
     <main>
       <slot />
     </main>
-    <section class="post-content">
-      <!-- post-content -->
+    <section>
+      <slot name="post-content" />
     </section>
     <page-footer />
   </section>

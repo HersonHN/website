@@ -4,6 +4,9 @@
       :title="title"
       :posts="posts"
     />
+    <template v-slot:post-content>
+      <all-tags />
+    </template>
   </Layout>
 </template>
 
@@ -34,6 +37,7 @@
 
 <script>
   import PostList from '@/components/post-list.vue';
+  import AllTags from '@/components/all-tags.vue';
 
   export default {
     name: 'Tag',
@@ -44,6 +48,7 @@
     },
     components: {
       PostList,
+      AllTags,
     },
     computed: {
       title() {

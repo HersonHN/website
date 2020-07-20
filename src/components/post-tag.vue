@@ -12,9 +12,13 @@
     name: 'PostTag',
     props: {
       tag: Object,
+      href: String,
     },
     computed: {
       path() {
+        if (this.href) {
+          return this.href;
+        }
         return `/tags/${this.tag.id}`;
       },
     },
@@ -22,7 +26,6 @@
 </script>
 
 <style lang="scss">
-
   $tag-light: lightyellow;
   $tag-dark: #efd32a;
 

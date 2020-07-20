@@ -4,6 +4,9 @@
       :title="title"
       :posts="posts"
     />
+  <template v-slot:post-content>
+    <all-tags />
+  </template>
   </Layout>
 </template>
 
@@ -28,6 +31,7 @@ query Posts {
 
 <script>
   import PostList from '@/components/post-list.vue';
+  import AllTags from '@/components/all-tags.vue';
 
   export default {
     name: 'Posts',
@@ -38,6 +42,7 @@ query Posts {
     },
     components: {
       PostList,
+      AllTags,
     },
     computed: {
       title() {
