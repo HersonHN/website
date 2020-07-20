@@ -8,6 +8,5 @@ import './assets/css/highlight/tomorrow-night-bright.css';
 import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, { router, head, isClient }) {
-  head.bodyAttrs = { class: 'system-theme' };
-  Vue.component('Layout', DefaultLayout)
+  Vue.component('Layout', DefaultLayout);
 }

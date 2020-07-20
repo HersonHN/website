@@ -16,8 +16,8 @@
           totalPages
           currentPage
         }
-        edges {
-          node {
+        posts: edges {
+          meta: node {
             ... on Post {
               id
               path
@@ -50,12 +50,8 @@
         return 'Tag: ' + this.$page.tag.title;
       },
       posts() {
-        return this.$page.tag.belongsTo.edges.map(edge => edge.node);
+        return this.$page.tag.belongsTo.posts.map(post => post.meta);
       },
     },
   }
 </script>
-
-<style lang="scss">
-
-</style>

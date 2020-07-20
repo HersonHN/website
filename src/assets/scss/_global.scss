@@ -8,6 +8,10 @@ html, body {
   height: 100%;
 }
 
+body {
+  @include light-theme;
+}
+
 a {
   @extend .fg-color;
   transition: color 0.2s ease;

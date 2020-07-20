@@ -25,7 +25,7 @@ query Post ($id: ID!) {
     title
     description
     date (format: "YYYY-MM-DD")
-    tags {
+    tags (sortBy: "title ASC") {
       id
       title
     }
