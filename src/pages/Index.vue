@@ -15,7 +15,7 @@
 
   export default {
     metaInfo: {
-      title: 'Home'
+      title: 'Home',
     },
     components: {
       HersonLogo,

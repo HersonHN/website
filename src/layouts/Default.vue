@@ -1,5 +1,5 @@
 <template>
-  <section id="global-content"
+  <section id="app"
     :class="[page.forceTheme ? `${page.forceTheme}-theme` : '']"
   >
     <page-header></page-header>
@@ -41,25 +41,25 @@ query {
 </script>
 
 <style lang="scss">
-body {
-  text-rendering: optimizeLegibility;
-  height: 100%;
-  font-family: sans-serif;
-}
-
-#global-content {
-  display: flex;
-  flex-flow: column nowrap;
-  min-height: 100%;
-
-  .content {
-    max-width: 80ch;
-    margin: auto;
-    padding: 1rem;
+  body {
+    text-rendering: optimizeLegibility;
+    height: 100%;
+    font-family: sans-serif;
   }
-}
 
-#global-content > main {
-  flex: 1 1;
-}
+  #app {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100%;
+
+    .content {
+      max-width: 80ch;
+      margin: auto;
+      padding: 1rem;
+    }
+  }
+
+  #global-content > main {
+    flex: 1 1;
+  }
 </style>

@@ -6,7 +6,18 @@
 
 module.exports = {
   siteName: 'Herson Salinas',
-  plugins: [],
+  templates: {
+    Post: '/:year/:title',
+  },
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/posts/*.md',
+        typeName: 'Post',
+      }
+    }
+  ],
   chainWebpack: config => {
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
