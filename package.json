@@ -18,7 +18,7 @@
     "@vue/cli-plugin-eslint": "^4.4.6",
     "@vue/cli-service": "^4.4.6",
     "babel-eslint": "^10.1.0",
-    "change-theme-button": "^0.2.2",
+    "change-theme-button": "^0.2.3",
     "earthbound-battlebackgrounds": "git+https://github.com/gjtorikian/Earthbound-Battle-Backgrounds-JS.git",
     "eslint": "^7.5.0",
     "eslint-plugin-gridsome": "^1.5.0",

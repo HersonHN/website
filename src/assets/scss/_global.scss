@@ -13,7 +13,7 @@ body {
 }
 
 a {
-  @extend .fg-color;
+  color: var(--foreground-color);
   transition: color 0.2s ease;
   word-break: break-word;
 }
@@ -54,7 +54,7 @@ pre > code {
 }
 
 code {
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: rgba(50%, 50%, 50%, 0.2);
   padding: .1rem .2rem;
 }
 
@@ -63,14 +63,33 @@ button,
 textarea,
 select {
   font: inherit;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  border: 1px solid rgba(50%, 50%, 50%, 0.7);
+}
+
+button {
+  color: var(--foreground-color);
+  transition: all 0.2s ease;
+}
+button:hover {
+  color: var(--background-color);
+  border-color: crimson;
+  background-color: crimson;
+  cursor: pointer;
 }
 
 input, button, textarea {
   font-size: .9rem;
-  padding: .5rem;
+  line-height: 2.2rem;
+  padding: 0 .75rem;
+  margin: 0 0.25rem;
 }
 
 textarea {
+  padding: .75rem;
+  line-height: 1.5rem;
   width: 100%;
   border: none;
 }

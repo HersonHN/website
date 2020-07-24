@@ -18,7 +18,7 @@
         </nav>
       </div>
       <div class="flex-shrink change-theme-container">
-        <change-theme v-if="!page.forceTheme" />
+        <change-theme v-if="!forceTheme" />
       </div>
     </div>
   </header>
@@ -40,6 +40,11 @@
         required: false,
         default: '',
       },
+      forceTheme: {
+        type: String,
+        required: false,
+        default: '',
+      },
     },
 
     components: {
@@ -55,6 +60,8 @@
         if (this.page.post.fileInfo.name) {
           return this.page.post.fileInfo.name;
         }
+
+        return '';
       },
     }
   }
@@ -74,6 +81,10 @@
     .change-theme-container {
       min-width: 32px;
       min-height: 32px;
+    }
+
+    .change-theme-container button {
+      line-height: 1rem;
     }
 
     &.banner {

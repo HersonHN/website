@@ -4,9 +4,9 @@
       :title="title"
       :posts="posts"
     />
-  <template v-slot:post-content>
-    <all-tags />
-  </template>
+    <template v-slot:post-content>
+      <all-tags />
+    </template>
   </Layout>
 </template>
 

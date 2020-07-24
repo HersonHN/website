@@ -23,6 +23,11 @@ $background: #FFFFFF;
 
     a[href] { color: $fg-light; }
   }
+
+  --background-color: #{$bg};
+  --foreground-color: #{$fg};
+  --link-color: #{$link};
+  --link-hover: #{$link-hover};
 }
 
 

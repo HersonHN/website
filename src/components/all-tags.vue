@@ -7,7 +7,7 @@
       :key="tag.id"
     />
     <post-tag
-      href='/posts/'
+      href="/posts/"
       :tag="{ title: 'ALL POSTS' }"
     />
   </nav>

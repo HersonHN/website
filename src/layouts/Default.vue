@@ -1,9 +1,13 @@
 <template>
   <section
     id="app"
-    :class="[page.forceTheme ? `${page.forceTheme}-theme` : '']"
+    :class="[forceTheme ? `${forceTheme}-theme` : '']"
   >
-    <page-header :page="page" :layout="layout" />
+    <page-header
+      :page="page"
+      :layout="layout"
+      :force-theme="forceTheme"
+    />
     <main>
       <slot />
     </main>
@@ -34,6 +38,11 @@ query {
         default() { return {}; },
       },
       layout: {
+        type: String,
+        required: false,
+        default: '',
+      },
+      forceTheme: {
         type: String,
         required: false,
         default: '',

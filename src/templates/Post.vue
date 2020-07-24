@@ -1,5 +1,8 @@
 <template>
-  <Layout :page="$page" layout="post">
+  <Layout
+    :page="$page"
+    layout="post"
+  >
     <section class="post content">
       <div class="title">
         <h1>{{ $page.post.title }}</h1>
