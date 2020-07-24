@@ -8,22 +8,18 @@ module.exports = {
   siteName: 'Herson Salinas',
   titleTemplate: '%s',
   templates: {
-    Post: '/:year/:title',
-  },
-  templates: {
+    Post: '/:year/:fileInfo__name',
     Tag: '/tags/:id',
   },
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/posts/*.md',
         typeName: 'Post',
-        templates: '/:year/:title',
+        path: 'static/content/posts/*.md',
         refs: {
           tags: {
             typeName: 'Tag',
-            templates: '/tags/:id',
             create: true
           }
         },
