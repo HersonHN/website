@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :page="$page" layout="post">
     <section class="post content">
       <div class="title">
         <h1>{{ $page.post.title }}</h1>
@@ -24,6 +24,9 @@ query Post ($id: ID!) {
     path
     title
     description
+    fileInfo {
+      name
+    }
     date (format: "YYYY-MM-DD")
     tags (sortBy: "title ASC") {
       id

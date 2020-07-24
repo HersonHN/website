@@ -2,10 +2,10 @@
   <header
     class="site-header bg-color"
     :class="{
-      'banner blur': page.layout === 'post',
+      'banner blur': layout === 'post',
     }"
     :style="{
-      'background-image': page.slug ? `url('/assets/img/banners/${ page.slug }@banner.png')` : ''
+      'background-image': slug ? `url('/content/banners/${ slug }@banner.png')` : ''
     }"
   >
     <div class="flex header-inner">
@@ -35,21 +35,28 @@
         required: false,
         default() { return {}; },
       },
-      site: {
-        type: Object,
+      layout: {
+        type: String,
         required: false,
-        default() { return {}; },
-      },
-      posts: {
-        type: Array,
-        required: false,
-        default() { return []; },
+        default: '',
       },
     },
 
     components: {
       ChangeTheme,
     },
+
+    computed: {
+      slug() {
+        if (!this.page.post) {
+          return '';
+        }
+
+        if (this.page.post.fileInfo.name) {
+          return this.page.post.fileInfo.name;
+        }
+      },
+    }
   }
 </script>
 

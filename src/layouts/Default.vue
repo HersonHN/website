@@ -3,7 +3,7 @@
     id="app"
     :class="[page.forceTheme ? `${page.forceTheme}-theme` : '']"
   >
-    <page-header />
+    <page-header :page="page" :layout="layout" />
     <main>
       <slot />
     </main>
@@ -32,6 +32,11 @@ query {
         type: Object,
         required: false,
         default() { return {}; },
+      },
+      layout: {
+        type: String,
+        required: false,
+        default: '',
       },
     },
     components: {
