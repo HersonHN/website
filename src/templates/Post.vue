@@ -52,6 +52,7 @@ export default {
       banner: this.$page.post.fileInfo.name,
       title: this.$page.post.title,
       description: this.$page.post.description,
+      date: this.$page.post.date,
     };
   },
   components: {

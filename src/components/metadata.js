@@ -24,6 +24,7 @@ export default {
 
     const meta = getMetadata(this);
     const metaList = [
+      { name: 'author', content: 'Herson Salinas' },
       { property: 'og:image:height', content: '675' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image', content: meta.socialBanner },
@@ -39,6 +40,14 @@ export default {
       { name: 'twitter:title', content: meta.title },
       { name: 'twitter:description', content: meta.description },
     ];
+
+    if (meta.date) {
+      metaList.push({
+        meta: 'publish_date',
+        property: 'og:publish_date',
+        content: meta.date,
+      });
+    }
 
     return {
       title: meta.title,
@@ -59,9 +68,10 @@ export default {
 function getMetadata(vm) {
   const siteName = getSiteName(vm);
   const basePath = getBasePath(vm);
-  const title = getTitle(vm);
-  const description = getDescription(vm);
-  const banner = getBanner(vm) || 'default';
+  const title = getMetaProp(vm, 'title', true);
+  const description = getMetaProp(vm, 'description', true);
+  const banner = getMetaProp(vm, 'banner', false) || 'default';
+  const date = getMetaProp(vm, 'date', false);
 
   const path = vm.$router.currentRoute.path;
   const fullPath = basePath + path;
@@ -70,15 +80,16 @@ function getMetadata(vm) {
   const pageBanner = `${basePath}/content/banners/${banner}@banner.png`;
 
   return {
-    siteName: siteName,
-    basePath: basePath,
     banner: banner,
-    pageBanner: pageBanner,
-    socialBanner: socialBanner,
-    fullPath: fullPath,
-    path: path,
-    title: title,
+    basePath: basePath,
+    date: date,
     description: description,
+    fullPath: fullPath,
+    pageBanner: pageBanner,
+    path: path,
+    siteName: siteName,
+    socialBanner: socialBanner,
+    title: title,
   }
 }
 
@@ -100,11 +111,6 @@ function getMetaProp(vm, prop, required) {
 
   if (required) {
     console.error(`Please set a [meta] object with a [${prop}] property for the page component`);
-  } else {
-    console.info(
-      `To set a [${prop}], set a [meta] object with a [${prop}] property for the page component \n` +
-      'Example: \n' + JSON.stringify({ meta: { banner: "default" } }, null, 2)
-    );
   }
   return '';
 }
@@ -124,16 +130,3 @@ function getBasePath(vm) {
 
   return vm.$static.metadata.siteUrl.replace(/\/$/, '');
 }
-
-function getTitle(vm) {
-  return getMetaProp(vm, 'title', true);
-}
-
-function getDescription(vm) {
-  return getMetaProp(vm, 'description', true);
-}
-
-function getBanner(vm) {
-  return getMetaProp(vm, 'banner', false);
-}
-
