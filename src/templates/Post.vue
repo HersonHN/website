@@ -1,6 +1,6 @@
 <template>
   <Layout
-    :page="$page"
+    :page="page"
     layout="post"
   >
     <section class="post content">
@@ -24,21 +24,21 @@
 <page-query>
 query Post ($id: ID!) {
   post(id: $id) {
-    path
-    title
-    description
-    fileInfo {
-      name
-    }
+    path, title, description, content
+    fileInfo { name }
     date (format: "YYYY-MM-DD")
-    tags (sortBy: "title ASC") {
-      id
-      title
-    }
-    content
+    tags (sortBy: "title ASC") { id, title }
   }
 }
 </page-query>
+
+<static-query>
+query {
+  metadata {
+    siteName, siteUrl, pathPrefix,
+  }
+}
+</static-query>
 
 <script>
   import PostTag from '@/components/post-tag.vue';
@@ -48,11 +48,53 @@ query Post ($id: ID!) {
     metaInfo () {
       return {
         title: this.$page.post.title,
-        hasCode: this.$page.post.content.indexOf('<pre>') > -1,
+        meta: [
+          { property: 'og:url', content: this.postURL, },
+          { property: 'og:title', content: this.description, },
+          { property: 'og:type', content: 'website', },
+          { property: 'og:image', content: this.socialBanner, },
+          { property: 'og:image:width', content: '1200', },
+          { property: 'og:image:height', content: '675', },
+          { property: 'og:site_name', content: this.siteName, },
+          { property: 'og:locale', content: 'en_US', },
+          { property: 'article:author', content: this.siteName, },
+          { name: 'twitter:creator', content: '@hersonhn', },
+          { name: 'twitter:url', content: this.postURL, },
+          { name: 'twitter:title', content: this.description, },
+          { name: 'twitter:image', content: this.socialBanner, },
+        ],
       }
     },
     components: {
       PostTag,
+    },
+    computed: {
+      page() {
+        const props = {};
+        props.banner = this.banner;
+        return Object.assign(props, this.$page);
+      },
+      basePath() {
+        return this.$static.metadata.siteUrl.replace(/\/$/, '');
+      },
+      banner() {
+        return `${this.basePath}/content/banners/${this.slug}@banner.png`;
+      },
+      socialBanner() {
+        return `${this.basePath}/content/banners/${this.slug}@social.png`;
+      },
+      slug() {
+        return this.$page.post.fileInfo.name;
+      },
+      description() {
+        return this.$page.post.description;
+      },
+      postURL() {
+        return this.basePath + this.$page.post.path;
+      },
+      siteName() {
+        return this.$static.metadata.siteName;
+      },
     },
   }
 </script>

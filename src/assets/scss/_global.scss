@@ -38,11 +38,10 @@ p, li {
 }
 
 pre {
-  padding: 1rem 1.4rem;
   max-width: 100%;
   overflow: auto;
   border-radius: 4px;
-  background: hsl(210, 28%, 93%);
+  margin-bottom: 3rem !important;
 }
 
 pre, code {

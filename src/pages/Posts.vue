@@ -11,22 +11,17 @@
 </template>
 
 <static-query>
-query Posts {
-  allPost(sortBy: "date") {
-    posts: edges {
-      meta: node {
-        title
-        path
-        description
-        date (format: "YYYY-MM-DD")
-        tags (sortBy: "title ASC") {
-          id
-          title
+  query Posts {
+    allPost(sortBy: "date") {
+      posts: edges {
+        meta: node {
+          title, path, description
+          date (format: "YYYY-MM-DD")
+          tags (sortBy: "title ASC") { id, title, }
         }
       }
     }
   }
-}
 </static-query>
 
 <script>

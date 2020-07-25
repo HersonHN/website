@@ -5,7 +5,7 @@
       'banner blur': layout === 'post',
     }"
     :style="{
-      'background-image': slug ? `url('/content/banners/${ slug }@banner.png')` : ''
+      'background-image': `url('${page.banner}')`
     }"
   >
     <div class="flex header-inner">
@@ -50,20 +50,6 @@
     components: {
       ChangeTheme,
     },
-
-    computed: {
-      slug() {
-        if (!this.page.post) {
-          return '';
-        }
-
-        if (this.page.post.fileInfo.name) {
-          return this.page.post.fileInfo.name;
-        }
-
-        return '';
-      },
-    }
   }
 </script>
 

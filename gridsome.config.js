@@ -7,6 +7,7 @@
 module.exports = {
   siteName: 'Herson Salinas',
   titleTemplate: '%s',
+  siteUrl: siteURL(),
   templates: {
     Post: '/:year/:fileInfo__name',
     Tag: '/tags/:id',
@@ -30,6 +31,9 @@ module.exports = {
         },
       },
     },
+    {
+      use: '@gridsome/plugin-sitemap',
+    },
   ],
   chainWebpack: config => {
     const svgRule = config.module.rule('svg');
@@ -37,3 +41,9 @@ module.exports = {
     svgRule.use('vue-svg-loader').loader('vue-svg-loader');
   }
 };
+
+function siteURL() {
+  return process.env.NODE_ENV === 'production'
+    ? 'https://www.herson.hn/'
+    : 'http://localhost:8080';
+}

@@ -15,18 +15,12 @@
     tag(id: $id) {
       title
       belongsTo(page: 1, perPage: 100) @paginate {
-        pageInfo {
-          totalPages
-          currentPage
-        }
+        pageInfo { totalPages, currentPage }
         posts: edges {
           meta: node {
             ... on Post {
-              id
-              path
-              title
+              id, path, title, description
               date (format: "YYYY-MM-DD")
-              description
             }
           }
         }
