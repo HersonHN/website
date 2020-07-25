@@ -8,6 +8,9 @@
       'background-image': pageBanner
     }"
   >
+    <div v-if="!forceTheme">
+      <div v-html="nastyCode"></div>
+    </div>
     <div class="flex header-inner">
       <div class="flex-grow">
         <nav class="center">
@@ -27,6 +30,22 @@
 <script>
 import ChangeTheme from 'change-theme-button/vue/change-theme';
 
+// Forcing this to be the first code to be executed when the page is compiled
+// that way it avoids the page to be fully loaded to set the theme, it's just
+// some milliseconds in difference but without it it's more noticeable when
+// the theme changes in the page load.
+const nastyCode = `
+  [[script]]
+    if (localStorage.getItem('theme')) {
+      document.body.classList.remove('light-theme', 'dark-theme', 'system-theme');
+      document.body.classList.add(localStorage.getItem('theme'));
+    }
+  [[/script]]
+  `
+  .replace(/\[\[/g, '<')
+  .replace(/\]\]/g, '>');
+
+
 export default {
   name: 'PageHeader',
   props: {
@@ -45,6 +64,10 @@ export default {
       required: false,
       default: '',
     },
+  },
+
+  data() {
+    return { nastyCode };
   },
 
   components: {
