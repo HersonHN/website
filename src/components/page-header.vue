@@ -1,11 +1,8 @@
 <template>
   <header
-    class="site-header bg-color"
-    :class="{
-      'banner blur': layout === 'post',
-    }"
+    class="site-header bg-color banner blur"
     :style="{
-      'background-image': `url('${page.banner}')`
+      'background-image': page.banner && `url('${page.banner}')`
     }"
   >
     <div class="flex header-inner">
