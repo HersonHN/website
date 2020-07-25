@@ -76,8 +76,13 @@ function getMetadata(vm) {
   const path = vm.$router.currentRoute.path;
   const fullPath = basePath + path;
 
-  const socialBanner = `${basePath}/banners/${banner}@social.png`;
-  const pageBanner = `${basePath}/banners/${banner}@banner.png`;
+  let socialBanner = `${basePath}/banners/${banner}@social.png`;
+  let pageBanner = `${basePath}/banners/${banner}@banner.png`;
+
+  if (banner === 'default') {
+    socialBanner = socialBanner.replace('@', '/');
+    pageBanner = pageBanner.replace('@', '/');
+  }
 
   return {
     banner: banner,
