@@ -41,59 +41,27 @@ query {
 </static-query>
 
 <script>
+  import metadata from '@/components/metadata';
   import PostTag from '@/components/post-tag.vue';
 
   export default {
     name: 'Post',
-    metaInfo () {
-      return {
-        title: this.$page.post.title,
-        meta: [
-          { property: 'og:url', content: this.postURL, },
-          { property: 'og:title', content: this.description, },
-          { property: 'og:type', content: 'website', },
-          { property: 'og:image', content: this.socialBanner, },
-          { property: 'og:image:width', content: '1200', },
-          { property: 'og:image:height', content: '675', },
-          { property: 'og:site_name', content: this.siteName, },
-          { property: 'og:locale', content: 'en_US', },
-          { property: 'article:author', content: this.siteName, },
-          { name: 'twitter:creator', content: '@hersonhn', },
-          { name: 'twitter:url', content: this.postURL, },
-          { name: 'twitter:title', content: this.description, },
-          { name: 'twitter:image', content: this.socialBanner, },
-        ],
-      }
-    },
+    mixins: [metadata],
     components: {
       PostTag,
     },
     computed: {
-      page() {
-        const props = {};
-        props.banner = this.banner;
-        return Object.assign(props, this.$page);
-      },
-      basePath() {
-        return this.$static.metadata.siteUrl.replace(/\/$/, '');
-      },
-      banner() {
-        return `${this.basePath}/content/banners/${this.slug}@banner.png`;
-      },
-      socialBanner() {
-        return `${this.basePath}/content/banners/${this.slug}@social.png`;
+      path() {
+        return this.$page.post.path;
       },
       slug() {
         return this.$page.post.fileInfo.name;
       },
+      title() {
+        return this.$page.post.title;
+      },
       description() {
         return this.$page.post.description;
-      },
-      postURL() {
-        return this.basePath + this.$page.post.path;
-      },
-      siteName() {
-        return this.$static.metadata.siteName;
       },
     },
   }
