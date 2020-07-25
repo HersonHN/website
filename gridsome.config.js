@@ -34,6 +34,12 @@ module.exports = {
     {
       use: '@gridsome/plugin-sitemap',
     },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: process.env.H_GOOGLE_ANALYTICS
+      },
+    },
   ],
   chainWebpack: config => {
     const svgRule = config.module.rule('svg');
