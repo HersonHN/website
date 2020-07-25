@@ -12,8 +12,8 @@ const Canvas = require('canvas');
 const trianglify = require('trianglify');
 const optipng = require('optipng');
 
-const postsPath   = Path.join(__dirname, '../static/content/posts');
-const bannersPath = Path.join(__dirname, '../static/content/banners');
+const postsPath   = Path.join(__dirname, '../content/posts');
+const bannersPath = Path.join(__dirname, '../static/banners');
 
 const ls = path => fs.readdirSync(path);
 const lsFilter = (path, filter, noExt) => ls(path)
