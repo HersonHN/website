@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :page="page">
     <post-list
       :title="title"
       :posts="posts"
@@ -13,7 +13,7 @@
 <page-query>
   query Tag ($id: ID!) {
     tag(id: $id) {
-      title
+      title, path
       belongsTo(page: 1, perPage: 100) @paginate {
         pageInfo { totalPages, currentPage }
         posts: edges {
@@ -29,17 +29,24 @@
   }
 </page-query>
 
+<static-query>
+  query {
+    metadata {
+      siteName, siteUrl
+    }
+  }
+</static-query>
+
 <script>
+  import metadata from '@/components/metadata';
+
   import PostList from '@/components/post-list.vue';
   import AllTags from '@/components/all-tags.vue';
 
   export default {
     name: 'Tag',
-    metaInfo () {
-      return {
-        title: this.title,
-      }
-    },
+    mixins: [metadata],
+
     components: {
       PostList,
       AllTags,
@@ -50,6 +57,12 @@
       },
       posts() {
         return this.$page.tag.belongsTo.posts.map(post => post.meta);
+      },
+      description() {
+        return 'All posts about ' + this.$page.tag.title;
+      },
+      path() {
+        return this.$page.tag.path;
       },
     },
   }
