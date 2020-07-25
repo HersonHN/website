@@ -15,13 +15,24 @@
   </Layout>
 </template>
 
+<static-query>
+  query {
+    metadata {
+      siteName, siteUrl
+    }
+  }
+</static-query>
+
 <script>
 import HersonLogo from '@/assets/images/logo.svg';
+import metadata from '@/components/metadata';
 
 export default {
-  metaInfo: {
+  meta: {
     title: 'Herson Salinas',
+    description: 'Herson Salinas\' website',
   },
+  mixins: [metadata],
   components: {
     HersonLogo,
   },
