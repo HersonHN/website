@@ -22,80 +22,73 @@
 </template>
 
 <page-query>
-query Post ($id: ID!) {
-  post(id: $id) {
-    path, title, description, content
-    fileInfo { name }
-    date (format: "YYYY-MM-DD")
-    tags (sortBy: "title ASC") { id, title }
+  query Post ($id: ID!) {
+    post(id: $id) {
+      path, title, description, content
+      fileInfo { name }
+      date (format: "YYYY-MM-DD")
+      tags (sortBy: "title ASC") { id, title }
+    }
   }
-}
 </page-query>
 
 <static-query>
-query {
-  metadata {
-    siteName, siteUrl, pathPrefix,
+  query {
+    metadata {
+      siteName, siteUrl, pathPrefix,
+    }
   }
-}
 </static-query>
 
 <script>
-  import metadata from '@/components/metadata';
-  import PostTag from '@/components/post-tag.vue';
+import metadata from '@/components/metadata';
+import PostTag from '@/components/post-tag.vue';
 
-  export default {
-    name: 'Post',
-    mixins: [metadata],
-    components: {
-      PostTag,
-    },
-    computed: {
-      path() {
-        return this.$page.post.path;
-      },
-      slug() {
-        return this.$page.post.fileInfo.name;
-      },
-      title() {
-        return this.$page.post.title;
-      },
-      description() {
-        return this.$page.post.description;
-      },
-    },
+export default {
+  name: 'Post',
+  mixins: [metadata],
+  meta() {
+    return {
+      banner: this.$page.post.fileInfo.name,
+      title: this.$page.post.title,
+      description: this.$page.post.description,
+    };
+  },
+  components: {
+    PostTag,
   }
+}
 </script>
 
 <style lang="scss">
-  .post.content {
-    padding-bottom: 4rem;
+.post.content {
+  padding-bottom: 4rem;
 
-    .title {
-      margin-bottom: 2rem;
+  .title {
+    margin-bottom: 2rem;
 
-      h1 {
-        margin-bottom: 0;
-        font-size: 1.7rem;
-      }
-
-      .second-line {
-        line-height: 2rem;
-      }
-
-      small {
-        display: inline-block;
-      }
+    h1 {
+      margin-bottom: 0;
+      font-size: 1.7rem;
     }
 
-    article {
-      > p, > ul, > ol {
-        margin-bottom: 1.5rem;
-      }
-      h1, h2, h3 {
-        margin-top: 4rem;
-        margin-bottom: 2rem;
-      }
+    .second-line {
+      line-height: 2rem;
+    }
+
+    small {
+      display: inline-block;
     }
   }
+
+  article {
+    > p, > ul, > ol {
+      margin-bottom: 1.5rem;
+    }
+    h1, h2, h3 {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
 </style>

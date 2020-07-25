@@ -31,11 +31,11 @@
 </template>
 
 <style lang="scss">
-  .site-footer {
-    text-align: center;
+.site-footer {
+  text-align: center;
 
-    nav {
-      padding: 2em .5em;
-    }
+  nav {
+    padding: 2em .5em;
   }
+}
 </style>

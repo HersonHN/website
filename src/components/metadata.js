@@ -14,7 +14,7 @@ const GRAPHQL_TEMPLATE = `
 `;
 
 export default {
-  metaInfo () {
+  metaInfo() {
     if (!this.$static) {
       console.error(
         'Please implement the GraphQL template:\n'
@@ -22,73 +22,118 @@ export default {
       )
     };
 
-    const metadata = [
+    const meta = getMetadata(this);
+    const metaList = [
       { property: 'og:image:height', content: '675' },
       { property: 'og:image:width', content: '1200' },
-      { property: 'og:image', content: this.socialBanner },
+      { property: 'og:image', content: meta.socialBanner },
       { property: 'og:locale', content: 'en_US' },
-      { property: 'og:site_name', content: this.siteName },
-      { property: 'og:title', content: this.title },
-      { property: 'og:description', content: this.description },
+      { property: 'og:site_name', content: meta.siteName },
+      { property: 'og:title', content: meta.title },
+      { property: 'og:description', content: meta.description },
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: this.fullPath },
+      { property: 'og:url', content: meta.fullPath },
       { name: 'twitter:creator', content: '@hersonhn' },
-      { name: 'twitter:url', content: this.fullPath },
-      { name: 'twitter:image', content: this.socialBanner },
-      { name: 'twitter:title', content: this.title },
-      { name: 'twitter:description', content: this.description },
+      { name: 'twitter:url', content: meta.fullPath },
+      { name: 'twitter:image', content: meta.socialBanner },
+      { name: 'twitter:title', content: meta.title },
+      { name: 'twitter:description', content: meta.description },
     ];
 
     return {
-      title: this.title,
-      meta: metadata,
-    }
+      title: meta.title,
+      meta: metaList,
+      pageMeta: meta,
+    };
   },
 
   computed: {
     page() {
       const props = {};
-      props.banner = this.banner;
+      props.meta = getMetadata(this);
       return Object.assign(props, this.$page);
     },
-    siteName() {
-      if (!this.$static) return '';
-      if (!this.$static.metadata) return '';
-      if (!this.$static.metadata.siteName) return '';
+  }
+};
 
-      return this.$static.metadata.siteName;
-    },
-    basePath() {
-      if (!this.$static) return '';
-      if (!this.$static.metadata) return '';
-      if (!this.$static.metadata.siteUrl) return '';
+function getMetadata(vm) {
+  const siteName = getSiteName(vm);
+  const basePath = getBasePath(vm);
+  const title = getTitle(vm);
+  const description = getDescription(vm);
+  const banner = getBanner(vm) || 'default';
 
-      return this.$static.metadata.siteUrl.replace(/\/$/, '');
-    },
-    banner() {
-      return `${this.basePath}/content/banners/${this.slug}@banner.png`;
-    },
-    socialBanner() {
-      return `${this.basePath}/content/banners/${this.slug}@social.png`;
-    },
-    fullPath() {
-      return this.basePath + this.path;
-    },
+  const path = vm.$router.currentRoute.path;
+  const fullPath = basePath + path;
 
-    // Default values to be overwritten
-    slug() {
-      return 'default';
-    },
-    title() {
-      return this.siteName;
-    },
-    description() {
-      console.error('Please set a `description` property for the component');
-      return '';
-    },
-    path() {
-      console.error('Please set a `path` property for the component');
-      return '';
-    },
+  const socialBanner = `${basePath}/content/banners/${banner}@social.png`;
+  const pageBanner = `${basePath}/content/banners/${banner}@banner.png`;
+
+  return {
+    siteName: siteName,
+    basePath: basePath,
+    banner: banner,
+    pageBanner: pageBanner,
+    socialBanner: socialBanner,
+    fullPath: fullPath,
+    path: path,
+    title: title,
+    description: description,
   }
 }
+
+function getMetaProp(vm, prop, required) {
+  let meta = vm.$options.meta;
+
+  if (typeof meta === 'function') {
+    meta = vm.$options.meta.call(vm);
+  }
+
+  if (!meta) {
+    console.error('Please set a `meta` object for the page component');
+    return '';
+  }
+
+  if (meta[prop]) {
+    return meta[prop];
+  }
+
+  if (required) {
+    console.error(`Please set a [meta] object with a [${prop}] property for the page component`);
+  } else {
+    console.info(
+      `To set a [${prop}], set a [meta] object with a [${prop}] property for the page component \n` +
+      'Example: \n' + JSON.stringify({ meta: { banner: "default" } }, null, 2)
+    );
+  }
+  return '';
+}
+
+function getSiteName(vm) {
+  if (!vm.$static) return '';
+  if (!vm.$static.metadata) return '';
+  if (!vm.$static.metadata.siteName) return '';
+
+  return vm.$static.metadata.siteName;
+}
+
+function getBasePath(vm) {
+  if (!vm.$static) return '';
+  if (!vm.$static.metadata) return '';
+  if (!vm.$static.metadata.siteUrl) return '';
+
+  return vm.$static.metadata.siteUrl.replace(/\/$/, '');
+}
+
+function getTitle(vm) {
+  return getMetaProp(vm, 'title', true);
+}
+
+function getDescription(vm) {
+  return getMetaProp(vm, 'description', true);
+}
+
+function getBanner(vm) {
+  return getMetaProp(vm, 'banner', false);
+}
+

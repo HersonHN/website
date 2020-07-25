@@ -1,8 +1,11 @@
 <template>
   <header
-    class="site-header bg-color banner blur"
+    class="site-header bg-color"
+    :class="{
+      'banner blur': hasBanner
+    }"
     :style="{
-      'background-image': page.banner && `url('${page.banner}')`
+      'background-image': pageBanner
     }"
   >
     <div class="flex header-inner">
@@ -22,106 +25,119 @@
 </template>
 
 <script>
-  import ChangeTheme from 'change-theme-button/vue/change-theme';
+import ChangeTheme from 'change-theme-button/vue/change-theme';
 
-  export default {
-    name: 'PageHeader',
-    props: {
-      page: {
-        type: Object,
-        required: false,
-        default() { return {}; },
-      },
-      layout: {
-        type: String,
-        required: false,
-        default: '',
-      },
-      forceTheme: {
-        type: String,
-        required: false,
-        default: '',
-      },
+export default {
+  name: 'PageHeader',
+  props: {
+    page: {
+      type: Object,
+      required: false,
+      default() { return {}; },
     },
+    layout: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    forceTheme: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
 
-    components: {
-      ChangeTheme,
+  components: {
+    ChangeTheme,
+  },
+
+  computed: {
+    hasBanner() {
+      if (!this.page.meta) return;
+      return Boolean(this.page.meta.banner);
     },
-  }
+    pageBanner() {
+      if (!this.hasBanner) {
+        return null;
+      }
+      return `url('${this.page.meta.pageBanner}')`;
+    },
+  },
+}
 </script>
 
 <style lang="scss">
-  @import '../assets/scss/variables';
+@import '../assets/scss/variables';
 
-  .site-header {
-    padding: 0;
+.site-header {
+  padding: 0;
 
-    .header-inner {
-      border-top: 5px solid crimson;
-      padding: 0.5rem 1rem;
-    }
-
-    .change-theme-container {
-      min-width: 32px;
-      min-height: 32px;
-    }
-
-    .change-theme-container button {
-      line-height: 1rem;
-    }
-
-    &.banner {
-      min-height: 15rem;
-      transition: min-height 1s linear;
-      background-position: center top;
-      background-size: cover;
-    }
-
-    .rounded {
-      display: inline-block;
-      padding: .5rem 1rem;
-      border-radius: 10px;
-    }
+  .header-inner {
+    border-top: 5px solid crimson;
+    padding: 0.5rem 1rem;
   }
 
-  .site-header.sticky {
+  .change-theme-container {
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .change-theme-container button {
+    line-height: 1rem;
+  }
+
+  &.banner {
+    min-height: 15rem;
+    transition: min-height 1s linear;
+    background-position: center top;
+    background-size: cover;
+  }
+
+  .rounded {
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+  }
+}
+
+.site-header.sticky {
+  position: sticky;
+  z-index: 2;
+  top: 0px;
+
+  .header-inner {
     position: sticky;
-    z-index: 2;
     top: 0px;
-
-    .header-inner {
-      position: sticky;
-      top: 0px;
-    }
-
-    &.banner {
-      top: -11rem;
-    }
   }
 
-  @media (orientation: portrait) {
-    .site-header.banner {
-      min-height: 25rem;
-    }
+  &.banner {
+    top: -11rem;
+  }
+}
 
-    .site-header.banner.sticky {
-      top: -21rem;
-    }
+@media (orientation: portrait) {
+  .site-header.banner {
+    min-height: 25rem;
   }
 
-  // Blurred line at the bottom of banners
-
-  @mixin blur-shadow($color) {
-    .site-header.banner.blur {
-      box-shadow: inset 0px -5px 5px 0px $color;
-    }
+  .site-header.banner.sticky {
+    top: -21rem;
   }
+}
 
-  .light-theme { @include blur-shadow($background); }
-  .dark-theme { @include blur-shadow($foreground); }
-  .system-theme { @include blur-shadow($background); }
+// Blurred line at the bottom of banners
 
-  @media (prefers-color-scheme: dark)  {
-    .system-theme { @include blur-shadow($foreground); }
+@mixin blur-shadow($color) {
+  .site-header.banner.blur {
+    box-shadow: inset 0px -5px 5px 0px $color;
   }
+}
+
+.light-theme { @include blur-shadow($background); }
+.dark-theme { @include blur-shadow($foreground); }
+.system-theme { @include blur-shadow($background); }
+
+@media (prefers-color-scheme: dark)  {
+  .system-theme { @include blur-shadow($foreground); }
+}
 </style>

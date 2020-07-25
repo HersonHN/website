@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <post-list
-      :title="title"
+      :title="$options.meta.title"
       :posts="posts"
     />
     <template v-slot:post-content>
@@ -25,27 +25,25 @@
 </static-query>
 
 <script>
-  import PostList from '@/components/post-list.vue';
-  import AllTags from '@/components/all-tags.vue';
+import metadata from '@/components/metadata';
+import PostList from '@/components/post-list.vue';
+import AllTags from '@/components/all-tags.vue';
 
-  export default {
-    name: 'Posts',
-    metaInfo () {
-      return {
-        title: this.title,
-      }
+export default {
+  name: 'Posts',
+  mixins: [metadata],
+  meta: {
+    title: 'All Posts',
+    description: 'All posts',
+  },
+  components: {
+    PostList,
+    AllTags,
+  },
+  computed: {
+    posts() {
+      return this.$static.allPost.posts.map(post => post.meta);
     },
-    components: {
-      PostList,
-      AllTags,
-    },
-    computed: {
-      title() {
-        return 'All Posts';
-      },
-      posts() {
-        return this.$static.allPost.posts.map(post => post.meta);
-      },
-    },
-  }
+  },
+};
 </script>

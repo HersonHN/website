@@ -18,63 +18,55 @@
   </section>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
-  }
-}
-</static-query>
-
 <script>
-  import PageHeader from '@/components/page-header';
-  import PageFooter from '@/components/page-footer';
+import PageHeader from '@/components/page-header';
+import PageFooter from '@/components/page-footer';
 
-  export default {
-    props: {
-      page: {
-        type: Object,
-        required: false,
-        default() { return {}; },
-      },
-      layout: {
-        type: String,
-        required: false,
-        default: '',
-      },
-      forceTheme: {
-        type: String,
-        required: false,
-        default: '',
-      },
+export default {
+  props: {
+    page: {
+      type: Object,
+      required: false,
+      default() { return {}; },
     },
-    components: {
-      PageHeader,
-      PageFooter,
+    layout: {
+      type: String,
+      required: false,
+      default: '',
     },
-  };
+    forceTheme: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
+  components: {
+    PageHeader,
+    PageFooter,
+  },
+};
 </script>
 
 <style lang="scss">
-  body {
-    text-rendering: optimizeLegibility;
-    height: 100%;
-    font-family: sans-serif;
-  }
+body {
+  text-rendering: optimizeLegibility;
+  height: 100%;
+  font-family: sans-serif;
+}
 
-  #app {
-    display: flex;
-    flex-flow: column nowrap;
-    min-height: 100%;
+#app {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100%;
 
-    .content {
-      max-width: 80ch;
-      margin: auto;
-      padding: 1rem;
-    }
+  .content {
+    max-width: 80ch;
+    margin: auto;
+    padding: 1rem;
   }
+}
 
-  #app > main {
-    flex: 1 1;
-  }
+#app > main {
+  flex: 1 1;
+}
 </style>

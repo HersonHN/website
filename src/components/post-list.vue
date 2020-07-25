@@ -24,15 +24,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'PostList',
-    props: {
-      title: String,
-      posts: Array,
-    },
-  };
+export default {
+  name: 'PostList',
+  props: {
+    title: String,
+    posts: Array,
+  },
+};
 </script>
-
-<style lang="scss">
-
-</style>
