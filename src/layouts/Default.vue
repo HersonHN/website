@@ -1,7 +1,7 @@
 <template>
   <section
     id="app"
-    :class="[forceTheme ? `${forceTheme}-theme` : '']"
+    :class="[forceTheme ? `${forceTheme}-theme` : 'system-theme']"
   >
     <page-header
       :page="page"

@@ -21,7 +21,10 @@
         </nav>
       </div>
       <div class="flex-shrink change-theme-container">
-        <change-theme v-if="!forceTheme" />
+        <change-theme
+          v-if="!forceTheme"
+          target="#app"
+        />
       </div>
     </div>
   </header>
@@ -37,8 +40,9 @@ import ChangeTheme from 'change-theme-button/vue/change-theme';
 const nastyCode = `
   [[script]]
     if (localStorage.getItem('theme')) {
-      document.body.classList.remove('light-theme', 'dark-theme', 'system-theme');
-      document.body.classList.add(localStorage.getItem('theme'));
+      let element = document.getElementById('app');
+      element.classList.remove('light-theme', 'dark-theme', 'system-theme');
+      element.classList.add(localStorage.getItem('theme'));
     }
   [[/script]]
   `
