@@ -21,7 +21,7 @@
         </nav>
       </div>
       <div class="flex-shrink change-theme-container">
-        <change-theme
+        <change-theme-button
           v-if="!forceTheme"
           target="#app"
         />
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import ChangeTheme from 'change-theme-button/vue/change-theme';
+import ChangeThemeButton from 'change-theme-button';
 
 // Forcing this to be the first code to be executed when the page is compiled
 // that way it avoids the page to be fully loaded to set the theme, it's just
@@ -75,7 +75,7 @@ export default {
   },
 
   components: {
-    ChangeTheme,
+    ChangeThemeButton,
   },
 
   computed: {
