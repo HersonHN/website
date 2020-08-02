@@ -9,5 +9,11 @@ import './assets/css/fontello/fontello-embedded.css';
 import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, { router, head, isClient }) {
+  head.link.push({
+    rel: 'alternate',
+    type: 'application/rss+xml',
+    href: '/feed.xml',
+  });
+
   Vue.component('Layout', DefaultLayout);
 }

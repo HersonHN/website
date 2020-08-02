@@ -28,6 +28,7 @@
     "eslint": "^7.5.0",
     "eslint-plugin-gridsome": "^1.5.0",
     "eslint-plugin-vue": "^6.2.2",
+    "gridsome-plugin-feed": "git+https://github.com/HersonHN/gridsome-plugin-feed.git",
     "lodash": "^4.17.19",
     "optipng": "^2.2.0",
     "random": "^2.2.0",
