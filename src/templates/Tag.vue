@@ -38,7 +38,7 @@
 </static-query>
 
 <script>
-import metadata from '@/components/metadata';
+import metadata from '@/mixins/metadata';
 
 import PostList from '@/components/post-list.vue';
 import AllTags from '@/components/all-tags.vue';

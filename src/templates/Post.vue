@@ -41,7 +41,7 @@
 </static-query>
 
 <script>
-import metadata from '@/components/metadata';
+import metadata from '@/mixins/metadata';
 import PostTag from '@/components/post-tag.vue';
 
 export default {

@@ -25,7 +25,7 @@
 
 <script>
 import HersonLogo from '@/assets/images/logo.svg';
-import metadata from '@/components/metadata';
+import metadata from '@/mixins/metadata';
 
 export default {
   meta: {

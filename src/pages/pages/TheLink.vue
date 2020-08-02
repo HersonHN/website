@@ -53,7 +53,7 @@
 </static-query>
 
 <script>
-import metadata from '@/components/metadata';
+import metadata from '@/mixins/metadata';
 
 export default {
   name: 'TheLink',
