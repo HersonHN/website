@@ -104,3 +104,9 @@ picture {
     margin-bottom: 0;
   }
 }
+
+::selection {
+  background-color: crimson;
+  color: white;
+  padding: .5rem;
+}
