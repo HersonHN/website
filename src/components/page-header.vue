@@ -9,14 +9,14 @@
     }"
   >
     <div v-if="!forceTheme">
-      <div v-html="nastyCode"></div>
+      <div v-html="nastyCode" />
     </div>
     <div class="flex header-inner">
       <div class="flex-grow">
         <nav class="center">
           <span class="bg-color rounded">
-            <a href="/">Home</a> |
-            <a href="/posts">Posts</a>
+            <a-link to="/">Home</a-link>
+            <a-link to="/posts">Posts</a-link>
           </span>
         </nav>
       </div>
@@ -32,6 +32,7 @@
 
 <script>
 import ChangeThemeButton from 'change-theme-button';
+import ALink from '@/components/a-link';
 
 // Forcing this to be the first code to be executed when the page is compiled
 // that way it avoids the page to be fully loaded to set the theme, it's just
@@ -76,6 +77,7 @@ export default {
 
   components: {
     ChangeThemeButton,
+    ALink,
   },
 
   computed: {
