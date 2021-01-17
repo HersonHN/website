@@ -9,7 +9,7 @@
     }"
   >
     <div v-if="!forceTheme">
-      <div v-html="nastyCode" />
+      <div v-html="unsafeCode" />
     </div>
     <div class="flex header-inner">
       <div class="flex-grow">
@@ -23,7 +23,7 @@
       <div class="flex-shrink change-theme-container">
         <change-theme-button
           v-if="!forceTheme"
-          target="#app"
+          :target="target"
         />
       </div>
     </div>
@@ -33,15 +33,16 @@
 <script>
 import ChangeThemeButton from 'change-theme-button';
 import ALink from '@/components/a-link';
+const target = 'body';
 
 // Forcing this to be the first code to be executed when the page is compiled
 // that way it avoids the page to be fully loaded to set the theme, it's just
 // some milliseconds in difference but without it it's more noticeable when
 // the theme changes in the page load.
-const nastyCode = `
+const unsafeCode = `
   [[script]]
     if (localStorage.getItem('theme')) {
-      let element = document.getElementById('app');
+      let element = document.querySelector('${target}');
       element.classList.remove('light-theme', 'dark-theme', 'system-theme');
       element.classList.add(localStorage.getItem('theme'));
     }
@@ -72,7 +73,10 @@ export default {
   },
 
   data() {
-    return { nastyCode };
+    return {
+      unsafeCode,
+      target,
+    };
   },
 
   components: {

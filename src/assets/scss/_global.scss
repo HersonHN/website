@@ -5,11 +5,12 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 body {
-  @include light-theme;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  font-family: sans-serif;
 }
 
 a {

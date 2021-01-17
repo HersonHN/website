@@ -45,16 +45,11 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  text-rendering: optimizeLegibility;
-  height: 100%;
-  font-family: sans-serif;
-}
 
 #app {
   display: flex;
   flex-flow: column nowrap;
-  min-height: 100%;
+  min-height: 100vh;
 
   .content {
     max-width: 80ch;
