@@ -1,8 +1,5 @@
 <template>
-  <section
-    id="app"
-    :class="[forceTheme ? `${forceTheme}-theme` : 'system-theme']"
-  >
+  <section id="app">
     <page-header
       :page="page"
       :layout="layout"
