@@ -35,12 +35,6 @@ module.exports = {
       use: '@gridsome/plugin-sitemap',
     },
     {
-      use: '@gridsome/plugin-google-analytics',
-      options: {
-        id: process.env.H_GOOGLE_ANALYTICS
-      },
-    },
-    {
       use: 'gridsome-plugin-feed',
       options: {
         contentTypes: ['Post'],
