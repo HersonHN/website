@@ -7,16 +7,16 @@
           target="_blank"
           href="https://www.github.com/hersonhn/"
         ><i class="icon-github" /></a>
-        <!-- <a
+        <a
           class="icon"
           target="_blank"
           href="https://www.twitter.com/hersonhn/"
-        ><i class="icon-twitter" /></a> -->
-        <!-- <a
+        ><i class="icon-twitter" /></a>
+        <a
           class="icon"
           target="_blank"
           href="https://www.instagram.com/hersonhn/"
-        ><i class="icon-instagram" /></a> -->
+        ><i class="icon-instagram" /></a>
         <a
           class="icon"
           target="_blank"
