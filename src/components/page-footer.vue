@@ -15,11 +15,6 @@
         <a
           class="icon"
           target="_blank"
-          href="https://www.instagram.com/hersonhn/"
-        ><i class="icon-instagram" /></a>
-        <a
-          class="icon"
-          target="_blank"
           href="https://hersonhn.tumblr.com/"
         ><i class="icon-tumblr" /></a>
       </p>
