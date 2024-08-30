@@ -21,13 +21,11 @@ module.exports = {
         refs: {
           tags: {
             typeName: 'Tag',
-            create: true
-          }
+            create: true,
+          },
         },
         remark: {
-          plugins: [
-            '@gridsome/remark-prismjs',
-          ],
+          plugins: ['@gridsome/remark-prismjs'],
         },
       },
     },
@@ -39,17 +37,17 @@ module.exports = {
       options: {
         contentTypes: ['Post'],
         feedOptions: {
-          title: 'Herson Salinas\'s webpage',
+          title: "Herson Salinas's webpage",
         },
         rss: {
           enabled: true,
-          output: '/feed.xml'
+          output: '/feed.xml',
         },
-        nodeToFeedItem: (node) => ({
+        nodeToFeedItem: node => ({
           title: node.title,
           content: node.description,
           url: siteURL() + node.path,
-          author: 'Herson Salinas'
+          author: 'Herson Salinas',
         }),
       },
     },
@@ -58,7 +56,7 @@ module.exports = {
     const svgRule = config.module.rule('svg');
     svgRule.uses.clear();
     svgRule.use('vue-svg-loader').loader('vue-svg-loader');
-  }
+  },
 };
 
 function siteURL(prefix = '') {

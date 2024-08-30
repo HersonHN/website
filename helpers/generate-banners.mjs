@@ -1,14 +1,14 @@
-const fs = require('fs');
-const Path = require('path');
+import fs from 'fs';
+import Path from 'path';
 
-const _ = require('lodash');
-const random = require('random');
-const seedrandom = require('seedrandom');
-const trianglify = require('trianglify');
-const yargs = require('yargs');
+import _ from 'lodash';
+import random from 'random';
+import seedrandom from 'seedrandom';
+import trianglify from 'trianglify';
+import yargs from 'yargs';
 
-const postsPath = Path.join(__dirname, '../content/posts');
-const bannersPath = Path.join(__dirname, '../static/banners');
+const postsPath = Path.join('../content/posts');
+const bannersPath = Path.join('../static/banners');
 
 const ls = path => fs.readdirSync(path);
 const lsFilter = (path, filter, noExt) =>
@@ -16,7 +16,7 @@ const lsFilter = (path, filter, noExt) =>
     .filter(file => file.match(filter))
     .map(name => (noExt ? name.replace(filter, '') : name));
 
-const flags = yargs.argv;
+const flags = yargs().argv;
 
 init().catch(error => console.error(error));
 

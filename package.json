@@ -10,31 +10,31 @@
     "banners:force": "node helpers/generate-banners.js --force"
   },
   "dependencies": {
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.23"
   },
   "devDependencies": {
     "@gridsome/plugin-sitemap": "^0.4.0",
-    "@gridsome/remark-prismjs": "^0.3.0",
+    "@gridsome/remark-prismjs": "^0.5.0",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.6.1",
-    "@vue/cli": "^4.4.6",
-    "@vue/cli-plugin-eslint": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
+    "@gridsome/transformer-remark": "^0.6.4",
+    "@vue/cli": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "babel-eslint": "^10.1.0",
     "change-theme-button": "^1.0.0",
     "earthbound-battlebackgrounds": "git+https://github.com/gjtorikian/Earthbound-Battle-Backgrounds-JS.git",
-    "eslint": "^7.5.0",
-    "eslint-plugin-gridsome": "^1.5.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "gridsome-plugin-feed": "git+https://github.com/HersonHN/gridsome-plugin-feed.git",
-    "lodash": "^4.17.19",
-    "random": "^2.2.0",
-    "sass": "^1.26.10",
-    "sass-loader": "^9.0.2",
+    "eslint": "^9.9.1",
+    "eslint-plugin-gridsome": "^1.6.2",
+    "eslint-plugin-vue": "^9.27.0",
+    "gridsome-plugin-feed": "^1.0.2",
+    "lodash": "^4.17.21",
+    "random": "^4.1.0",
+    "sass": "^1.77.8",
+    "sass-loader": "^10.1.1",
     "seedrandom": "^3.0.5",
     "trianglify": "^4.1.1",
-    "vue-eslint-parser": "^7.1.0",
+    "vue-eslint-parser": "^9.4.3",
     "vue-svg-loader": "^0.16.0",
-    "yargs": "^15.4.1"
+    "yargs": "^17.7.2"
   }
 }
