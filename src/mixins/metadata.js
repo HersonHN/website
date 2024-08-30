@@ -1,7 +1,6 @@
-
 /* GraphQL template:
  * =================
-*/
+ */
 
 const GRAPHQL_TEMPLATE = `
 <static-query>
@@ -17,10 +16,9 @@ export default {
   metaInfo() {
     if (!this.$static) {
       console.error(
-        'Please implement the GraphQL template:\n'
-        + GRAPHQL_TEMPLATE
-      )
-    };
+        'Please implement the GraphQL template:\n' + GRAPHQL_TEMPLATE,
+      );
+    }
 
     const meta = getMetadata(this);
     const metaList = [
@@ -34,11 +32,6 @@ export default {
       { property: 'og:description', content: meta.description },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: meta.fullPath },
-      { name: 'twitter:creator', content: '@hersonhn' },
-      { name: 'twitter:url', content: meta.fullPath },
-      { name: 'twitter:image', content: meta.socialBanner },
-      { name: 'twitter:title', content: meta.title },
-      { name: 'twitter:description', content: meta.description },
     ];
 
     if (meta.date) {
@@ -62,7 +55,7 @@ export default {
       props.meta = getMetadata(this);
       return Object.assign(props, this.$page);
     },
-  }
+  },
 };
 
 function getMetadata(vm) {
@@ -76,8 +69,8 @@ function getMetadata(vm) {
   const path = vm.$router.currentRoute.path;
   const fullPath = basePath + path;
 
-  let socialBanner = `${basePath}/banners/${banner}@social.png`;
-  let pageBanner = `${basePath}/banners/${banner}@banner.png`;
+  let socialBanner = `${basePath}/banners/${banner}@social.svg`;
+  let pageBanner = `${basePath}/banners/${banner}@banner.svg`;
 
   if (banner === 'default') {
     socialBanner = socialBanner.replace('@', '/');
@@ -95,7 +88,7 @@ function getMetadata(vm) {
     siteName: siteName,
     socialBanner: socialBanner,
     title: title,
-  }
+  };
 }
 
 function getMetaProp(vm, prop, required) {
@@ -115,7 +108,9 @@ function getMetaProp(vm, prop, required) {
   }
 
   if (required) {
-    console.error(`Please set a [meta] object with a [${prop}] property for the page component`);
+    console.error(
+      `Please set a [meta] object with a [${prop}] property for the page component`,
+    );
   }
   return '';
 }
