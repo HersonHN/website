@@ -6,8 +6,8 @@
     "dev": "gridsome develop",
     "explore": "gridsome explore",
     "lint": "vue-cli-service lint",
-    "banners": "node helpers/generate-banners.js",
-    "banners:force": "node helpers/generate-banners.js --force"
+    "banners": "node helpers/generate-banners.mjs",
+    "banners:force": "node helpers/generate-banners.mjs --force"
   },
   "dependencies": {
     "gridsome": "^0.7.23"

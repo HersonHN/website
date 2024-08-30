@@ -7,8 +7,8 @@ import seedrandom from 'seedrandom';
 import trianglify from 'trianglify';
 import yargs from 'yargs';
 
-const postsPath = Path.join('../content/posts');
-const bannersPath = Path.join('../static/banners');
+const postsPath = './content/posts';
+const bannersPath = './static/banners';
 
 const ls = path => fs.readdirSync(path);
 const lsFilter = (path, filter, noExt) =>
@@ -16,13 +16,12 @@ const lsFilter = (path, filter, noExt) =>
     .filter(file => file.match(filter))
     .map(name => (noExt ? name.replace(filter, '') : name));
 
-const flags = yargs().argv;
-
 init().catch(error => console.error(error));
 
 function init() {
   let posts = lsFilter(postsPath, /.md$/, true);
   let banners = lsFilter(bannersPath, /\@banner.svg$/, true);
+  const flags = yargs(process.argv.slice(2)).argv;
 
   console.log('posts', posts);
   console.log('banners', banners);
