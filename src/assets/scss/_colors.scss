@@ -1,35 +1,54 @@
 $foreground: #16161d; // Eigengrau
-$background: #FFFFFF;
+$background: #ffffff;
 
 @mixin color-theme($fg, $bg, $bg-dark, $fg-light, $link, $link-hover) {
   color: $fg;
   background-color: $bg;
 
-  a[href]       { color: $link; }
-  a[href]:hover { color: $link-hover; }
+  --background-color: $bg;
+  --foreground-color: $fg;
+  --link-color: $link;
+  --link-hover: $link-hover;
 
-  .fg-color        { color: $fg; }
-  .bg-color        { background-color: $bg; }
-  .fill-with-bg    { fill: $bg !important; } // This is for svg
-  .bg-color-border { border-color: $bg !important; }
-  .fg-color-border { border-color: $fg !important; }
-  .fg-color-invert { color: $bg !important; }
-  .bg-color-invert { background-color: $fg !important; }
+  a[href] {
+    color: $link;
+  }
+  a[href]:hover {
+    color: $link-hover;
+  }
+
+  .fg-color {
+    color: $fg;
+  }
+  .bg-color {
+    background-color: $bg;
+  }
+  .fill-with-bg {
+    fill: $bg !important;
+  } // This is for svg
+  .bg-color-border {
+    border-color: $bg !important;
+  }
+  .fg-color-border {
+    border-color: $fg !important;
+  }
+  .fg-color-invert {
+    color: $bg !important;
+  }
+  .bg-color-invert {
+    background-color: $fg !important;
+  }
 
   // for dark backgrounds (or even darker when using a dark theme)
   .bg-dark {
     color: $fg-light;
     background-color: $bg-dark;
 
-    a[href] { color: $fg-light; }
+    a[href] {
+      color: $fg-light;
+    }
   }
-
-  --background-color: #{$bg};
-  --foreground-color: #{$fg};
-  --link-color: #{$link};
-  --link-hover: #{$link-hover};
 }
-
 
 @mixin light-theme {
   @include color-theme(
@@ -57,9 +76,15 @@ html {
   @include light-theme;
 }
 
-@media (prefers-color-scheme: dark)  {
-  .system-theme { @include dark-theme; }
+@media (prefers-color-scheme: dark) {
+  .system-theme {
+    @include dark-theme;
+  }
 }
 
-.light-theme { @include light-theme; }
-.dark-theme  { @include dark-theme; }
+.light-theme {
+  @include light-theme;
+}
+.dark-theme {
+  @include dark-theme;
+}
