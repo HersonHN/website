@@ -60,10 +60,6 @@ export default {
 .index-page {
   padding: 2rem;
 
-  p {
-    padding-bottom: 1rem;
-  }
-
   .logo-container {
     $base-width: 450px;
 
