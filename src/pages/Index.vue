@@ -11,6 +11,12 @@
           href="https://news.herson.hn/"
         >RSS Reader</a>
       </p>
+      <p class="center">
+        <a
+          target="_blank"
+          href="https://lastfm.herson.hn/"
+        >LastFM collage generator</a>
+      </p>
     </section>
   </Layout>
 </template>
