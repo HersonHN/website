@@ -15,7 +15,7 @@
         <a
           target="_blank"
           href="https://lastfm.herson.hn/"
-        >LastFM collage generator</a>
+        >LastFM Collage Generator</a>
       </p>
     </section>
   </Layout>
