@@ -4,8 +4,8 @@ import Path from 'path';
 import _ from 'lodash';
 import random from 'random';
 import seedrandom from 'seedrandom';
-import trianglify from 'trianglify';
 import yargs from 'yargs';
+import trianglify from './vendor/trianglify.bundle.js';
 
 const postsPath = './content/posts';
 const bannersPath = './static/banners';
