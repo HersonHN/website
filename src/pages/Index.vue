@@ -30,7 +30,7 @@
 </static-query>
 
 <script>
-import HersonLogo from '@/assets/images/logo.svg';
+import HersonLogo from '@/components/herson-logo.vue';
 import metadata from '@/mixins/metadata';
 
 export default {
