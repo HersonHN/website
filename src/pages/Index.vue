@@ -8,6 +8,12 @@
       <p class="center">
         <a
           target="_blank"
+          href="https://www.npmjs.com/package/cleanview"
+        >Cleanview package</a>
+      </p>
+      <p class="center">
+        <a
+          target="_blank"
           href="https://news.herson.hn/"
         >RSS Reader</a>
       </p>
